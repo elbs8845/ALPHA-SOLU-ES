@@ -103,15 +103,4 @@
     </footer>
   </div>
   <script src="script.js"></script>
-  window.onload = function() {
-  const usuario = JSON.parse(localStorage.getItem('usuarioAtual'));
-  if(!usuario) {
-    window.location.href = 'index.html';
-  } else {
-    document.getElementById('usuarioName').textContent = usuario.login;
-    showSection('leads'); // Abre a seção Leads por padrão
-  }
-};
-
-</body>
-</html>
+  
