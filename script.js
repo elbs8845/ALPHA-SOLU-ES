@@ -15,7 +15,6 @@ function login() {
   } else {
     error.textContent = 'Usuário ou senha incorretos';
   }
-}
 
 function logout() {
   localStorage.removeItem('usuarioAtual');
