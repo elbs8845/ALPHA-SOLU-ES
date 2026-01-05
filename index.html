@@ -1,21 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>ALPHA SOLUÇÕES - Login</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>ALPHA SOLUÇÕES - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0b1d39;
+      font-family: Arial, sans-serif;
+    }
+    .login-card {
+      width: 360px;
+      background: #0b1d39;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .login-card h1 {
+      color: #f97316;
+      margin-bottom: 10px;
+    }
+    .login-card h2 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .login-card input {
+      width: 90%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #f97316;
+      background: #0b1d39;
+      color: #fff;
+      font-size: 14px;
+    }
+    .login-card input::placeholder {
+      color: #f0f0f0;
+    }
+    .login-card button {
+      width: 95%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #f97316;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-card button:hover {
+      background: #ea580c;
+    }
+    .assinatura {
+      color: #f97316;
+      font-size: 0.8em;
+      margin-top: 15px;
+    }
+    #error {
+      color: red;
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
 <body>
-<div class="login-card">
-<h1>ALPHA SOLUÇÕES</h1>
-<h2>Login</h2>
-<input type="text" id="user" placeholder="Usuário">
-<input type="password" id="pass" placeholder="Senha">
-<button onclick="login()">Entrar</button>
-<p id="error" style="color:red;"></p>
-<p class="assinatura">Desenvolvido: Elielma Barbosa</p>
-</div>
-<script src="script.js"></script>
-</body>
-</html>
-<link rel="stylesheet" href="style.css">
+  <div class="login-card">
+    <h1>ALPHA SOLUÇÕES</h1>
+    <h2>Login</h2>
+    <input type="text" id="user" placeholder="Usuário">
+    <input type="password" id="pass" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+    <p id="error"></p>
+    <p class="assinatura">Desenvolvido por Elielma Barbosa</p>
+  </div>
+  <script
