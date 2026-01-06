@@ -1,5 +1,6 @@
 // ===== Usuários iniciais =====
-let users = JSON.parse(localStorage.getItem('users')) || [
+let users = JSON.parse(localStorage.getItem('users')) 
+  || [
   {login:'admin', senha:'1234', tipo:'Admin'}
 ];
 
