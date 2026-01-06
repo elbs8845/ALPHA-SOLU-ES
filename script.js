@@ -1,3 +1,18 @@
+window.login = function() {
+  const user = document.getElementById('user').value;
+  const pass = document.getElementById('pass').value;
+  const error = document.getElementById('error');
+
+  const users = JSON.parse(localStorage.getItem('users')) || [{login:'admin', senha:'1234', tipo:'Admin'}];
+  const encontrado = users.find(u => u.login === user && u.senha === pass);
+  if(encontrado) {
+    localStorage.setItem('usuarioAtual', JSON.stringify(encontrado));
+    window.location.href = 'dashboard.html';
+  } else {
+    error.textContent = 'Usuário ou senha incorretos';
+  }
+};
+
 // ===== Usuários iniciais =====
 let users = JSON.parse(localStorage.getItem('users')) || [{login:'admin', senha:'1234', tipo:'Admin'}];
 let usuarioAtual = JSON.parse(localStorage.getItem('usuarioAtual')) || null;
