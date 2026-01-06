@@ -1,55 +1,108 @@
-```html
-<div class="progresso-container">
-<div class="progresso-barra" id="barra"></div>
-</div>
-<p id="percentual">Percentual atingido: 0%</p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>ALPHA SOLUÇÕES - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <header>
+      <h1>ALPHA SOLUÇÕES</h1>
+      <p>Bem-vindo, <span id="usuarioName"></span></p>
+    </header>
 
+    <div class="menu">
+      <button onclick="showSection('leads')">Leads</button>
+      <button onclick="showSection('vendas')">Vendas</button>
+      <button onclick="showSection('agendamentos')">Agendamentos</button>
+      <button onclick="showSection('relatorios')">Relatórios</button>
+      <button onclick="showSection('ranking')">Ranking</button>
+      <button onclick="showSection('adminUsers')">Usuários</button>
+      <button class="logout" onclick="logout()">Sair</button>
+    </div>
 
-<ul id="vendasList"></ul>
-</div>
+    <!-- LEADS -->
+    <div id="leads" class="section" style="display:none">
+      <h2>Leads</h2>
+      <input type="text" id="leadNome" placeholder="Nome do Cliente">
+      <input type="number" id="leadValor" placeholder="Valor desejado">
+      <select id="leadStatus">
+        <option value="">Status do Lead</option>
+        <option value="Novo">Novo</option>
+        <option value="Em negociação">Em negociação</option>
+        <option value="Fechado">Fechado</option>
+      </select>
+      <textarea id="leadObs" placeholder="Observações"></textarea>
+      <button onclick="addLead()">Adicionar Lead</button>
+      <ul id="leadsList"></ul>
+    </div>
 
+    <!-- VENDAS -->
+    <div id="vendas" class="section" style="display:none">
+      <h2>Vendas & Metas</h2>
+      <input type="text" id="vendaCliente" placeholder="Nome do Cliente">
+      <input type="number" id="vendaValor" placeholder="Valor da Venda">
+      <select id="vendaTipo">
+        <option value="">Tipo de Consórcio</option>
+        <option value="Imóvel">Imóvel</option>
+        <option value="Carro">Carro</option>
+        <option value="Moto">Moto</option>
+      </select>
+      <select id="vendaStatus">
+        <option value="">Status da Venda</option>
+        <option value="Pendente">Pendente</option>
+        <option value="Confirmada">Confirmada</option>
+        <option value="Cancelada">Cancelada</option>
+      </select>
+      <input type="date" id="vendaData">
+      <textarea id="vendaObs" placeholder="Observações"></textarea>
+      <button onclick="addVenda()">Adicionar Venda</button>
 
-<div id="agendamentos" class="section">
-<h2>Agendamentos</h2>
-<input type="text" id="agendamentoCliente" placeholder="Nome do Cliente">
-<input type="date" id="agendamentoData">
-<input type="time" id="agendamentoHora">
-<textarea id="agendamentoObs" placeholder="Observações"></textarea>
-<button onclick="addAgendamento()">Adicionar Agendamento</button>
-<ul id="agendamentosList"></ul>
-</div>
+      <input type="number" id="meta" placeholder="Meta mensal">
+      <div class="progresso-container">
+        <div class="progresso-barra" id="barra"></div>
+      </div>
+      <p id="percentual">Percentual atingido: 0%</p>
 
+      <ul id="vendasList"></ul>
+      <canvas id="graficoVendas" width="400" height="200"></canvas>
+    </div>
 
-<div id="relatorios" class="section">
-<h2>Relatórios em PDF</h2>
-<button onclick="gerarPDF()">Gerar PDF</button>
-</div>
+    <!-- RELATÓRIOS -->
+    <div id="relatorios" class="section" style="display:none">
+      <h2>Relatórios em PDF</h2>
+      <button onclick="gerarPDF()">Gerar PDF</button>
+    </div>
 
+    <!-- RANKING -->
+    <div id="ranking" class="section" style="display:none">
+      <h2>Ranking</h2>
+      <ul id="rankingList"></ul>
+      <canvas id="graficoRanking"></canvas>
+    </div>
 
-<div id="ranking" class="section">
-<h2>Ranking</h2>
-<ul id="rankingList"></ul>
-</div>
+    <!-- USUÁRIOS -->
+    <div id="adminUsers" class="section" style="display:none">
+      <h2>Gerenciar Usuários</h2>
+      <input type="text" id="novoUsuario" placeholder="Login do usuário">
+      <input type="password" id="novaSenha" placeholder="Senha">
+      <select id="tipoUsuario">
+        <option value="">Tipo de Usuário</option>
+        <option value="Vendedor">Vendedor</option>
+        <option value="Supervisor">Supervisor</option>
+      </select>
+      <button onclick="criarUsuario()">Criar Usuário</button>
+      <ul id="usuariosList"></ul>
+    </div>
 
-
-<div id="adminUsers" class="section">
-<h2>Gerenciar Usuários</h2>
-<input type="text" id="novoUsuario" placeholder="Login do usuário">
-<input type="password" id="novaSenha" placeholder="Senha">
-<select id="tipoUsuario">
-<option value="">Tipo de Usuário</option>
-<option value="Vendedor">Vendedor</option>
-<option value="Supervisor">Supervisor</option>
-</select>
-<button onclick="criarUsuario()">Criar Usuário</button>
-<ul id="usuariosList"></ul>
-</div>
-
-
-<footer>
-<p class="assinatura">Desenvolvido por Elielma Barbosa</p>
-</footer>
-</div>
-<script src="script.js"></script>
+    <footer>
+      <p class="assinatura">Desenvolvido por Elielma Barbosa</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
+
